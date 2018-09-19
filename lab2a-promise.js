@@ -10,7 +10,13 @@ function flip() {
 
 //// Add code here that will "flip" the coin ten times and write the 
 //// result to the console (e.g. "Heads" or "Tails" for each flip).
-
+for (var i = 0; i < 10; i++) {
+    flip().then(function() {
+        console.log("Head!");
+    }, function() {
+        console.log("Tails!");
+    });
+}
 
 
 
@@ -18,6 +24,25 @@ function flip() {
 
 function countBig(bignum) {
     // Add code here that returns a Promise that will resolve after it has counted to bignum
+    let p = new Promise(function(resolve, reject) {
+        if (count(bignum)) {
+            resolve();
+        } else {
+            reject();
+        }
+    });
+    
+    return p;
+}
+
+function count(bignum) {
+    var count = 0;
+    while (true) {
+        count++;
+        if (count == bignum) {
+            return true;
+        }
+    }
 }
 
 
